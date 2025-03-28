@@ -314,6 +314,19 @@ vercel
 </div>
 </div>
 
+    <script>
+        if (!localStorage.getItem('subscriptionActive')) {
+            alert('You must subscribe to access this content.');
+            window.location.href = "../advanced-classes.html";
+        }
+
+        function cancelSubscription() {
+            localStorage.removeItem('subscriptionActive');
+            alert('Subscription cancelled successfully.');
+            window.location.href = "../index.html";
+        }
+    </script>
+
 <script>
     // Animation for fade-in effect
     const sections = document.querySelectorAll('section');
