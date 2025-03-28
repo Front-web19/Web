@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Classes</title>
+    <script src="https://js.paystack.co/v1/inline.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .container {
+            margin-top: 100px;
+            text-align: center;
+            animation: fadeIn 1s ease-in-out;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container mt-5 text-center">
+        <h2>Subscribe to Access Advanced Classes</h2>
+        <p>Please enter your email to proceed with payment:</p>
+        
+        <input type="email" id="userEmail" class="form-control my-3" placeholder="Enter your email" required>
+        
+        <button class="btn btn-primary my-3" onclick="payWithPaystack('weekly')">Subscribe Weekly (₦5,000)</button>
+        <button class="btn btn-success my-3" onclick="payWithPaystack('monthly')">Subscribe Monthly (₦19,000)</button>
+    </div>
+
+    <script>
+        function payWithPaystack(plan) {
+            var userEmail = document.getElementById('userEmail').value;
+
+            if (!userEmail) {
+                alert("Please enter a valid email address.");
+                return;
+            }
+            
+            const planCode = plan === 'weekly' ? 'PLN_523wrxo1hlluilq' : 'PLN_el75f42vku6x74d';
+            
+            var handler = PaystackPop.setup({
+                key: 'pk_live_81c8c92f507e0de02164c6698b1d1966febc90a1', 
+                email: userEmail,
+                amount: plan === 'weekly' ? 500000 : 1900000, 
+                ref: 'FEWD-' + Math.floor((Math.random() * 1000000000) + 1), 
+                plan: planCode,
+                callback: function(response) {
+                    alert('Payment successful! Reference: ' + response.reference);
+                    localStorage.setItem('subscriptionActive', 'true');
+                    window.location.href = "content/dashboard.html";
+                },
+                onClose: function() {
+                    alert('Payment was cancelled.');
+                }
+            });
+            handler.openIframe();
+        }
+    </script>
+</body>
+</html>

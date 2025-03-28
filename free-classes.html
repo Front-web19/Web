@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Classes</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Blinking Floating Subscribe Button */
+        .subscribeBtn {
+            position: fixed;
+
+            right: 20px;
+            padding: 10px 20px;
+            background-color: red;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            animation: blink 1s infinite;
+        }
+        .subscribeBtn a{
+            font-size: large;
+            color: white;
+            text-decoration: none;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        .container {
+            margin-top: 100px;
+            text-align: center;
+            animation: fadeIn 1s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5 text-center">
+        <h2>Free Frontend Web Development Tutorials</h2>
+        <p>Enjoy our free tutorials below!</p>
+        
+        <div class="tutorial">
+            <h3>HTML Basics</h3>
+            <p>Learn the fundamentals of HTML structure.</p>
+        </div>
+        
+        <div class="tutorial">
+            <h3>CSS Styling</h3>
+            <p>Discover how to style your pages beautifully with CSS.</p>
+        </div>
+        
+        <div class="tutorial">
+            <h3>JavaScript Basics</h3>
+            <p>Get started with adding interactivity using JavaScript.</p>
+        </div>
+    </div>
+    <button class="subscribeBtn"><a href="advanced-classes.html">Subscribe for Advanced Topics!!</a></button>
+
+</body>
+</html>

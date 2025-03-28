@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Dashboard</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <div class="container1 text-center mt-5">
+        <h2>Welcome to Advanced Classes</h2>
+        <button class="btn-danger" onclick="cancelSubscription()">Cancel Subscription</button>
+        
+        <div class="courses mt-4">
+            <a href="html-mastery.html" class="course-link">HTML Mastery</a>
+            <a href="css-animations.html" class="course-link">CSS Animations & Styling</a>
+            <a href="javascript-fundamentals.html" class="course-link">JavaScript Fundamentals</a>
+            <a href="react-basics.html" class="course-link">React Basics</a>
+            <a href="advanced-js.html" class="course-link">Advanced JavaScript</a>
+            <a href="performance-optimization.html" class="course-link">Web Performance Optimization</a>
+            <a href="responsive-design.html" class="course-link">Responsive Design & Accessibility</a>
+        </div>
+    </div>
+
+    <script>
+        if (!localStorage.getItem('subscriptionActive')) {
+            alert('You must subscribe to access this content.');
+            window.location.href = "../advanced-classes.html";
+        }
+
+        function cancelSubscription() {
+            localStorage.removeItem('subscriptionActive');
+            alert('Subscription cancelled successfully.');
+            window.location.href = "../index.html";
+        }
+    </script>
+</body>
+</html>

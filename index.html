@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frontend Web Development</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        /* Blinking Floating Subscribe Button */
+        .subscribeBtn {
+            position: fixed;
+
+            right: 20px;
+            padding: 10px 20px;
+            background-color: red;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            animation: blink 1s infinite;
+        }
+        .subscribeBtn a{
+            font-size: large;
+            color: white;
+            text-decoration: none;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        #navBar a {
+            float: left;
+            display: block;
+            color: #f0f0f0;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+            transition: 0.3s;
+            align-content: center;
+        }
+        
+        #navBar a:hover {
+            background-color: #ff8800c9;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+    <div id="loader">
+        <h1>Loading...</h1>
+    </div>
+    
+    <script>
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('loader');
+            loader.style.display = 'none';
+        });
+    </script>   
+    <div class="container text-center mt-5">
+        <h1 class="display-4">Frontend Web Development</h1>
+        <p>Learn to build amazing websites with our Free and Advanced Classes.</p>
+        
+            <a href="#"><i class="fa-solid fa-code icon"></i></a>
+            <a href="#"><i class="fa-brands fa-html5 icon"></i></a>
+            <a href="#"><i class="fa-brands fa-js icon"></i></a>
+
+        
+        <div class="d-flex justify-content-center mt-5">
+            <a href="free-classes.html" class="btn btn-primary mx-3">Free Classes</a>
+            <a href="advanced-classes.html" class="btn btn-success mx-3">Advanced Classes</a>
+            <a href="quiz.html" class="btn btn-success mx-3">Take a Quiz</a>
+        </div>
+        <button class="subscribeBtn"><a href="advanced-classes.html">Subscribe for Advanced Topics!!</a></button>
+
+    </div>
+</body>
+</html>
