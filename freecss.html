@@ -5,6 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Discover How to Style Your Page with CSS</title>
     <style>
+         /* Blinking Floating Subscribe Button */
+        .subscribeBtn {
+            position: fixed;
+
+            right: 20px;
+            padding: 10px 20px;
+            background-color: red;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            animation: blink 1s infinite;
+        }
+        .subscribeBtn a{
+            font-size: large;
+            color: white;
+            text-decoration: none;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
         /* General Styling */
         body {
             background-color: #1a1a2e;
@@ -159,6 +182,8 @@
         <h2>8. Conclusion</h2>
         <p>CSS is essential for web design. Mastering it will help you create beautiful and responsive websites.</p>
     </div>
+        <button class="subscribeBtn"><a href="advanced-classes.html">Subscribe for Advanced Topics!!</a></button>
+
 
 </body>
 </html>
