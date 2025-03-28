@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>R Programming Course</title>
+    <style>
+    /* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* Reset Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #0c1027;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Course Container */
+.course-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+/* Course Card */
+.course-card {
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Hover Effect */
+.course-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
+}
+
+/* Course Title */
+.course-title {
+    font-size: 22px;
+    font-weight: 600;
+    color: #ffdd57;
+    margin-bottom: 10px;
+}
+
+/* Course Description */
+.course-desc {
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+/* Enroll Button */
+.enroll-btn {
+    display: inline-block;
+    background: #ff5722;
+    padding: 12px 25px;
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(255, 87, 34, 0.7);
+    transition: all 0.3s ease;
+}
+
+.enroll-btn:hover {
+    background: #ff7043;
+    box-shadow: 0 0 15px rgba(255, 87, 34, 1);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .course-container {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .course-container {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+
+    .course-card {
+        padding: 15px;
+    }
+
+    .course-title {
+        font-size: 18px;
+    }
+
+    .enroll-btn {
+        padding: 10px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .course-container {
+        grid-template-columns: 1fr;
+    }
+
+    .course-card {
+        width: 90%;
+        margin: auto;
+    }
+}
+
+/* Fade-In Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+    </style>
+</head>
+<body>
+
+    <h1>R Programming Course</h1>
+    
+    <div class="section">
+        <h2>📊 Machine Learning in R</h2>
+        <p>Learn how to build predictive models using R.</p>
+        <pre># Install ML package
+install.packages("caret")
+library(caret)
+# Train a simple model
+model <- train(Species ~ ., data=iris, method="rpart")
+summary(model)</pre>
+    </div>
+
+    <div class="section">
+        <h2>🌐 Web Scraping in R</h2>
+        <p>Extract data from websites using R.</p>
+        <pre># Install rvest package
+install.packages("rvest")
+library(rvest)
+# Scrape data
+page <- read_html("https://example.com")
+title <- page %>% html_nodes("h1") %>% html_text()
+print(title)</pre>
+    </div>
+
+    <div class="section">
+        <h2>📌 Take a Quiz</h2>
+        <div class="quiz-box">
+            <p><b>1. What is the function to load a dataset in R?</b></p>
+            <input type="radio" name="q1" value="read.csv"> read.csv()<br>
+            <input type="radio" name="q1" value="load.dataset"> load.dataset()<br>
+
+            <p><b>2. How do you install a package in R?</b></p>
+            <input type="radio" name="q2" value="install.pack"> install.pack()<br>
+            <input type="radio" name="q2" value="install.packages"> install.packages()<br>
+
+            <button class="btn" onclick="submitQuiz()">Submit</button>
+            <p id="quizResult"></p>
+        </div>
+    </div>
+
+    <button class="btn" onclick="logout()">Logout</button>
+
+    <script>
+        if (!localStorage.getItem("paidUser")) {
+            window.location.href = "index.html";
+        }
+
+        function submitQuiz() {
+            let score = 0;
+            if (document.querySelector('input[name="q1"]:checked')?.value === "read.csv") score++;
+            if (document.querySelector('input[name="q2"]:checked')?.value === "install.packages") score++;
+
+            document.getElementById("quizResult").innerText = "You scored: " + score + "/2";
+        }
+
+        function logout() {
+            localStorage.clear();
+            window.location.href = "R.html";
+        }
+    </script>
+
+</body>
+</html>

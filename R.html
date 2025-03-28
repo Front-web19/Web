@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>R Programming Course - Payment</title>
+    <style>
+        /* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* Reset Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #0c1027;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Form Container */
+.form-box {
+    max-width: 400px;
+    width: 90%;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    margin: auto;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+}
+
+/* Labels */
+label {
+    display: block;
+    font-size: 16px;
+    font-weight: 600;
+    margin: 10px 0 5px;
+}
+
+/* Input Fields */
+input, select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+/* Subscribe Button */
+.btn {
+    width: 100%;
+    padding: 12px;
+    background: #ff5722;
+    color: white;
+    border: none;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(255, 87, 34, 0.7);
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    background: #ff7043;
+    box-shadow: 0 0 15px rgba(255, 87, 34, 1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .form-box {
+        width: 100%;
+        padding: 15px;
+    }
+
+    label, input, select, .btn {
+        font-size: 14px;
+    }
+
+    .btn {
+        padding: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .form-box {
+        padding: 10px;
+    }
+
+    label, input, select, .btn {
+        font-size: 12px;
+    }
+
+    .btn {
+        padding: 8px;
+    }
+}
+
+    </style>
+</head>
+<body>
+
+    <h1>Subscribe to Access R Programming Course</h1>
+    <div class="form-box">
+        <label>Enter Your Email:</label>
+        <input type="email" id="userEmail" required placeholder="Enter your email">
+
+        <label>Select Plan:</label>
+        <select id="subscriptionPlan">
+            <option value="7000">Weekly - 7,000</option>
+            <option value="18000">Monthly - 18,000</option>
+        </select>
+
+        <button class="btn" onclick="payWithPaystack()">Subscribe & Access Course</button>
+    </div>
+
+    <script src="https://js.paystack.co/v1/inline.js"></script>
+    <script>
+        function payWithPaystack() {
+            let email = document.getElementById("userEmail").value;
+    
+            if (email === "") {
+                alert("Please enter your email");
+                return;
+            }
+    
+            let planCode = document.getElementById("subscriptionPlan").value === "7000" ? "PLN_q4hpqpu2y1gl6lm" : "PLN_phh7o9syu6rqwib";
+    
+            let handler = PaystackPop.setup({
+                key: 'pk_live_81c8c92f507e0de02164c6698b1d1966febc90a1',  // Replace with your Paystack public key
+                email: email,
+                plan: planCode,  // Using your pre-defined plan code for subscription
+                currency: "NGN",
+                ref: "R_SUB_" + Math.floor((Math.random() * 1000000000) + 1),
+                callback: function(response) {
+                    localStorage.setItem("paidUser", "true");
+                    localStorage.setItem("email", email);
+                    window.location.href = "course.html"; // Redirect to the paid course page
+                },
+                onClose: function() {
+                    alert("Payment window closed");
+                }
+            });
+    
+            handler.openIframe();
+        }
+    
+    </script>
+
+</body>
+</html>
