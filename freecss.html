@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discover How to Style Your Page with CSS</title>
+    <style>
+        /* General Styling */
+        body {
+            background-color: #1a1a2e;
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            color: #ff6b6b;
+            text-shadow: 0 0 15px #ff6b6b;
+            animation: glow 2s infinite alternate;
+        }
+
+        h2 {
+            font-size: 2rem;
+            color: #48cae4;
+            text-shadow: 0 0 10px #48cae4;
+            margin-top: 30px;
+        }
+
+        p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        /* Styling for Sections */
+        .section {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .section:hover {
+            transform: scale(1.05);
+        }
+
+        /* Code Blocks */
+        .code-box {
+            background: #333;
+            color: #ffdd57;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: left;
+            font-family: monospace;
+            max-width: 700px;
+            margin: 10px auto;
+            box-shadow: 0 0 15px rgba(255, 221, 87, 0.5);
+        }
+
+        /* Glow Animation */
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px #ff6b6b;
+            }
+            to {
+                text-shadow: 0 0 20px #ff3b3b;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Discover How to Style Your Page with CSS</h1>
+    <p>CSS (Cascading Style Sheets) allows you to create visually stunning websites. Let's explore its fundamentals.</p>
+
+    <div class="section">
+        <h2>1. What is CSS?</h2>
+        <p>CSS is used to control the style and layout of web pages. It allows you to change colors, fonts, spacing, and animations.</p>
+    </div>
+
+    <div class="section">
+        <h2>2. Applying CSS to HTML</h2>
+        <p>You can apply CSS in three ways:</p>
+        <ul>
+            <li><strong>Inline CSS</strong> - inside an HTML tag</li>
+            <li><strong>Internal CSS</strong> - inside a &lt;style&gt; tag in the HTML file</li>
+            <li><strong>External CSS</strong> - in a separate .css file</li>
+        </ul>
+        <div class="code-box">
+            &lt;style&gt;<br>
+            &nbsp;&nbsp;body { background-color: lightblue; }<br>
+            &lt;/style&gt;
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>3. Changing Text Style</h2>
+        <p>Use CSS to change fonts, sizes, and colors.</p>
+        <div class="code-box">
+            body { <br>
+            &nbsp;&nbsp;font-family: Arial, sans-serif;<br>
+            &nbsp;&nbsp;color: white;<br>
+            &nbsp;&nbsp;font-size: 18px;<br>
+            }
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>4. Adding Backgrounds & Colors</h2>
+        <p>CSS allows you to add colors and backgrounds.</p>
+        <div class="code-box">
+            body { <br>
+            &nbsp;&nbsp;background-color: black;<br>
+            &nbsp;&nbsp;color: white;<br>
+            }
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>5. Styling Buttons</h2>
+        <p>Make buttons look attractive.</p>
+        <div class="code-box">
+            button { <br>
+            &nbsp;&nbsp;background-color: blue;<br>
+            &nbsp;&nbsp;color: white;<br>
+            &nbsp;&nbsp;padding: 10px 20px;<br>
+            &nbsp;&nbsp;border-radius: 5px;<br>
+            }
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>6. Creating Animations</h2>
+        <p>CSS can be used to create cool animations.</p>
+        <div class="code-box">
+            @keyframes glow { <br>
+            &nbsp;&nbsp;from { text-shadow: 0 0 10px red; }<br>
+            &nbsp;&nbsp;to { text-shadow: 0 0 20px yellow; }<br>
+            }
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>7. Responsive Design</h2>
+        <p>Use CSS media queries to make websites fit all screen sizes.</p>
+        <div class="code-box">
+            @media (max-width: 600px) {<br>
+            &nbsp;&nbsp;body { font-size: 16px; }<br>
+            }
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>8. Conclusion</h2>
+        <p>CSS is essential for web design. Mastering it will help you create beautiful and responsive websites.</p>
+    </div>
+
+</body>
+</html>
