@@ -5,6 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fundamentals of HTML</title>
     <style>
+                /* Blinking Floating Subscribe Button */
+        .subscribeBtn {
+            position: fixed;
+
+            right: 20px;
+            padding: 10px 20px;
+            background-color: red;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            animation: blink 1s infinite;
+        }
+        .subscribeBtn a{
+            font-size: large;
+            color: white;
+            text-decoration: none;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
         /* General Styling */
         body {
             background-color: #121212;
