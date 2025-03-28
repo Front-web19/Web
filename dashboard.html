@@ -36,6 +36,13 @@
             alert('Subscription cancelled successfully.');
             window.location.href = "index.html";
         }
+        document.addEventListener("contextmenu", event => event.preventDefault()); // Disable right-click
+
+document.addEventListener("keydown", event => {
+    if (event.ctrlKey && (event.key === "u" || event.key === "U" || event.key === "s" || event.key === "i" || event.key === "j" || event.key === "c")) {
+        event.preventDefault();
+    }
+});
     </script>
 </body>
 </html>
