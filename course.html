@@ -4,197 +4,341 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>R Programming Course</title>
-    <style>
-    /* Import Google Font */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
-/* Reset Styles */
-* {
+<style>
+    /* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
-/* Body Styling */
-body {
-    font-family: 'Poppins', sans-serif;
-    background: #0c1027;
-    color: #fff;
+/* Sections Styling */
+section {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+    background: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+/* Heading Styling */
+h2 {
+    color: #007bff;
     text-align: center;
-    padding: 20px;
 }
 
-/* Course Container */
-.course-container {
-    max-width: 1200px;
-    margin: auto;
-    padding: 20px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-}
-
-/* Course Card */
-.course-card {
-    background: linear-gradient(135deg, #1e3c72, #2a5298);
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-    animation: fadeIn 1s ease-in-out;
-}
-
-/* Hover Effect */
-.course-card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
-}
-
-/* Course Title */
-.course-title {
-    font-size: 22px;
-    font-weight: 600;
-    color: #ffdd57;
-    margin-bottom: 10px;
-}
-
-/* Course Description */
-.course-desc {
+/* List and Paragraph Styling */
+p, ul {
     font-size: 16px;
-    margin: 10px 0;
+    line-height: 1.6;
 }
 
-/* Enroll Button */
-.enroll-btn {
-    display: inline-block;
-    background: #ff5722;
-    padding: 12px 25px;
-    text-decoration: none;
-    color: #fff;
-    font-weight: bold;
+/* Code Blocks */
+pre {
+    background: #272822;
+    color: #f8f8f2;
+    padding: 15px;
     border-radius: 5px;
-    box-shadow: 0 0 10px rgba(255, 87, 34, 0.7);
-    transition: all 0.3s ease;
+    overflow-x: auto;
 }
 
-.enroll-btn:hover {
-    background: #ff7043;
-    box-shadow: 0 0 15px rgba(255, 87, 34, 1);
+/* Animation: Sections Fade In */
+section.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Quiz Button Styling */
+#quiz-button {
+    display: block;
+    width: 200px;
+    margin: 20px auto;
+    padding: 12px;
+    background: #28a745;
+    color: white;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+#quiz-button:hover {
+    background: #218838;
 }
 
 /* Responsive Design */
-@media (max-width: 1024px) {
-    .course-container {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    }
-}
-
 @media (max-width: 768px) {
-    .course-container {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    }
-
-    .course-card {
-        padding: 15px;
-    }
-
-    .course-title {
-        font-size: 18px;
-    }
-
-    .enroll-btn {
-        padding: 10px 20px;
-    }
-}
-
-@media (max-width: 480px) {
-    .course-container {
-        grid-template-columns: 1fr;
-    }
-
-    .course-card {
+    section {
         width: 90%;
-        margin: auto;
+        margin: 20px auto;
+        padding: 15px;
     }
 }
 
-/* Fade-In Animation */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.quiz-btn {
+    display: inline-block;
+    background: #3b82f6;
+    color: white;
+    text-decoration: none;
+    padding: 12px 20px;
+    font-size: 18px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+    transition: 0.3s;
+    box-shadow: 0px 4px 10px rgba(0, 255, 255, 0.5);
 }
 
-    </style>
+.quiz-btn:hover {
+    background: #2563eb;
+    transform: scale(1.05);
+}
+.cancel-btn {
+    display: inline-block;
+    background: red;
+    color: white;
+    text-decoration: none;
+    padding: 12px 20px;
+    font-size: 18px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+    transition: 0.3s;
+    border: none;
+    cursor: pointer;
+}
+
+.cancel-btn:hover {
+    background: darkred;
+    transform: scale(1.05);
+}
+
+
+</style>
 </head>
 <body>
 
-    <h1>R Programming Course</h1>
+    <!-- Introduction to R Programming -->
+<section id="r-introduction">
+
+    <h2>Introduction to R Programming</h2>
+    <button class="cancel-btn" onclick="cancelSubscription()">Cancel Subscription</button>
+    <a href="Aquiz.html" class="quiz-btn">Take the R Programming Quiz</a>
+    <p>
+        R is a programming language and environment specifically designed for statistical computing and data analysis.
+        It is widely used by data scientists, statisticians, and researchers for processing large datasets, performing
+        complex statistical computations, and visualizing data through graphs and plots.
+    </p>
+    <p>
+        R provides built-in support for mathematical and statistical functions, making it a powerful tool for data 
+        manipulation. It also has a vast ecosystem of packages that extend its capabilities.
+    </p>
+    <pre><code># Checking the R version installed
+R.version.string</code></pre>
+</section>
+
+<!-- R Installation and Setup -->
+<section id="r-installation">
+    <h2>Installing and Setting Up R</h2>
+    <p>
+        To start using R, you need to install the R software. You can download it from 
+        <a href="https://cran.r-project.org/" target="_blank">CRAN (The Comprehensive R Archive Network)</a>. 
+        After installation, it is recommended to install RStudio, an integrated development environment (IDE) 
+        that provides a user-friendly interface for writing and running R code.
+    </p>
+    <h3>Steps to Install R:</h3>
+    <ul>
+        <li>Go to the official R website and download the latest version for your operating system.</li>
+        <li>Run the installer and follow the setup instructions.</li>
+        <li>Install RStudio (optional but recommended) for better code management.</li>
+        <li>Open R or RStudio and start coding!</li>
+    </ul>
+</section>
+
+<!-- R Data Types -->
+<section id="r-data-types">
+    <h2>Understanding Data Types in R</h2>
+    <p>
+        R supports various data types, which are essential for handling and manipulating data. 
+        Below are the primary data types in R:
+    </p>
+    <ul>
+        <li><strong>Numeric:</strong> Represents numbers (e.g., <code>5.6, -3.2</code>).</li>
+        <li><strong>Integer:</strong> Whole numbers, specified with <code>L</code> (e.g., <code>10L</code>).</li>
+        <li><strong>Character:</strong> Text or string data (e.g., <code>"Hello, World!"</code>).</li>
+        <li><strong>Logical:</strong> Boolean values (<code>TRUE</code> or <code>FALSE</code>).</li>
+        <li><strong>Complex:</strong> Complex numbers (e.g., <code>3+2i</code>).</li>
+    </ul>
+    <pre><code># Checking data types in R
+class(10.5)  # Numeric
+class(10L)   # Integer
+class("Hello")  # Character
+class(TRUE)  # Logical</code></pre>
+</section>
+
+<!-- Variables and Operators -->
+<section id="r-variables">
+    <h2>Variables and Operators</h2>
+    <p>
+        In R, variables are used to store values, which can be referenced and manipulated throughout a program. 
+        Variables can hold numbers, text, or more complex data structures such as lists or data frames.
+    </p>
+    <p>Below are different ways to assign values to variables in R:</p>
+    <pre><code># Assigning values to variables
+x <- 5
+y = "Hello R"
+z <<- TRUE
+
+# Printing variables
+print(x)
+print(y)
+print(z)</code></pre>
+    <h3>Operators in R</h3>
+    <p>R supports several types of operators, including:</p>
+    <ul>
+        <li><strong>Arithmetic operators:</strong> <code>+, -, *, /, ^</code></li>
+        <li><strong>Relational operators:</strong> <code>==, !=, >, <, >=, <=</code></li>
+        <li><strong>Logical operators:</strong> <code>&&, ||, !</code></li>
+    </ul>
+    <pre><code># Example of operators
+a <- 10
+b <- 5
+sum <- a + b  # Addition
+product <- a * b  # Multiplication
+is_equal <- a == b  # Logical comparison
+
+print(sum)
+print(product)
+print(is_equal)</code></pre>
+</section>
+
+<!-- R Control Structures -->
+<section id="r-control-structures">
+    <h2>Control Structures in R</h2>
+    <p>
+        R allows you to control the flow of execution using conditional statements and loops.
+        These are essential for decision-making and repetitive tasks.
+    </p>
     
-    <div class="section">
-        <h2>📊 Machine Learning in R</h2>
-        <p>Learn how to build predictive models using R.</p>
-        <pre># Install ML package
-install.packages("caret")
-library(caret)
-# Train a simple model
-model <- train(Species ~ ., data=iris, method="rpart")
-summary(model)</pre>
-    </div>
+    <h3>If-Else Statements</h3>
+    <pre><code># If-else example in R
+score <- 85
 
-    <div class="section">
-        <h2>🌐 Web Scraping in R</h2>
-        <p>Extract data from websites using R.</p>
-        <pre># Install rvest package
-install.packages("rvest")
-library(rvest)
-# Scrape data
-page <- read_html("https://example.com")
-title <- page %>% html_nodes("h1") %>% html_text()
-print(title)</pre>
-    </div>
+if (score >= 50) {
+    print("Pass")
+} else {
+    print("Fail")
+}</code></pre>
+    
+    <h3>For Loops</h3>
+    <pre><code># Looping through numbers 1 to 5
+for (i in 1:5) {
+    print(i)
+}</code></pre>
+</section>
 
-    <div class="section">
-        <h2>📌 Take a Quiz</h2>
-        <div class="quiz-box">
-            <p><b>1. What is the function to load a dataset in R?</b></p>
-            <input type="radio" name="q1" value="read.csv"> read.csv()<br>
-            <input type="radio" name="q1" value="load.dataset"> load.dataset()<br>
+<!-- R Functions -->
+<section id="r-functions">
+    <h2>Functions in R</h2>
+    <p>
+        Functions in R allow us to reuse code efficiently. They take inputs, process them, and return results.
+    </p>
+    <pre><code># Defining a function in R
+greet <- function(name) {
+    return(paste("Hello,", name))
+}
 
-            <p><b>2. How do you install a package in R?</b></p>
-            <input type="radio" name="q2" value="install.pack"> install.pack()<br>
-            <input type="radio" name="q2" value="install.packages"> install.packages()<br>
+# Calling the function
+print(greet("John"))</code></pre>
+</section>
 
-            <button class="btn" onclick="submitQuiz()">Submit</button>
-            <p id="quizResult"></p>
-        </div>
-    </div>
+<!-- R Data Visualization -->
+<section id="r-visualization">
+    <h2>Data Visualization in R</h2>
+    <p>
+        R is widely used for data visualization. The <strong>ggplot2</strong> package is one of the most popular 
+        tools for creating high-quality graphs.
+    </p>
+    <pre><code># Using ggplot2 for data visualization
+library(ggplot2)
 
-    <button class="btn" onclick="logout()">Logout</button>
+# Sample data
+data(mtcars)
+
+# Scatter plot of MPG vs Horsepower
+ggplot(mtcars, aes(x=mpg, y=hp)) + geom_point()</code></pre>
+</section>
+<a href="Aquiz.html" class="quiz-btn">Take the R Programming Quiz</a>
+
+<!-- Conclusion -->
+<section id="r-conclusion">
+    <h2>Conclusion</h2>
+    <p>
+        R is a powerful language for statistical computing, data science, and machine learning.
+        Its simplicity and flexibility make it a valuable tool for data analysts and programmers alike.
+    </p>
+    <p>
+        If you want to advance your R programming skills, consider exploring topics like machine learning in R,
+        data manipulation with <code>dplyr</code>, and building interactive applications with <code>Shiny</code>.
+    </p>
+</section>
+
+
+
 
     <script>
-        if (!localStorage.getItem("paidUser")) {
-            window.location.href = "index.html";
-        }
-
-        function submitQuiz() {
-            let score = 0;
-            if (document.querySelector('input[name="q1"]:checked')?.value === "read.csv") score++;
-            if (document.querySelector('input[name="q2"]:checked')?.value === "install.packages") score++;
-
-            document.getElementById("quizResult").innerText = "You scored: " + score + "/2";
-        }
-
-        function logout() {
-            localStorage.clear();
-            window.location.href = "R.html";
+        // Check if the user has paid
+        if (localStorage.getItem("paidUser") !== "true") {
+            alert("You need to subscribe to access this page.");
+            window.location.href = "R.html"; // Redirect to payment page
+          }
+        function cancelSubscription() {
+            let confirmCancel = confirm("Are you sure you want to cancel your subscription?");
+            
+            if (confirmCancel) {
+                localStorage.removeItem("paidUser"); // Remove subscription status
+                alert("Your subscription has been canceled.");
+                window.location.href = "index.html"; // Redirect to payment page
+            }
         }
     </script>
+
+      <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Animate sections when scrolling
+        let sections = document.querySelectorAll("section");
+        
+        function revealSections() {
+            sections.forEach(section => {
+                let position = section.getBoundingClientRect().top;
+                let screenHeight = window.innerHeight / 1.3;
+                if (position < screenHeight) {
+                    section.classList.add("show");
+                }
+            });
+        }
+    
+        window.addEventListener("scroll", revealSections);
+        revealSections();
+    });
+
+    document.addEventListener("contextmenu", event => event.preventDefault()); // Disable right-click
+
+    document.addEventListener("keydown", event => {
+        if (event.ctrlKey && (event.key === "u" || event.key === "U" || event.key === "s" || event.key === "i" || event.key === "j" || event.key === "c")) {
+            event.preventDefault();
+        }
+    });
+      </script>
 
 </body>
 </html>
