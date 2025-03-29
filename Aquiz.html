@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>R Programming Quiz</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="quiz.js"></script>
+
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>R Programming Quiz
+            <a href="R.html">Back</a>
+        </h1>
+        <div id="quiz-box">
+            <p id="question-text"></p>
+            <div id="options"></div>
+        </div>
+        <button id="next-btn">Next</button>
+        <p id="score"></p>
+    </div>
+    <script>
+        document.addEventListener("contextmenu", event => event.preventDefault()); // Disable right-click
+
+        document.addEventListener("keydown", event => {
+            if (event.ctrlKey && (event.key === "u" || event.key === "U" || event.key === "s" || event.key === "i" || event.key === "j" || event.key === "c")) {
+                event.preventDefault();
+            }
+        });
+    </script>
+</body>
+</html>
