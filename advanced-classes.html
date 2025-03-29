@@ -59,7 +59,7 @@
                 callback: function(response) {
                     alert('Payment successful! Reference: ' + response.reference);
                     localStorage.setItem('subscriptionActive', 'true');
-                    window.location.href = "content/dashboard.html";
+                    window.location.href = "dashboard.html";
                 },
                 onClose: function() {
                     alert('Payment was cancelled.');
